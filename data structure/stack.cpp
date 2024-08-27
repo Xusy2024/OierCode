@@ -10,34 +10,42 @@ int main(){
   cin>>n;
   for(int i=1;i<=n;i++){
     cin>>op;
-    if(op=="push"){
+    if(op=="push"){//入栈
       cin>>num;
-      if(st.size()==size) cout<<"overflow\n";
+      if(st.size()==size) cout<<"Error:Stack is overflow.\n";//上溢处理
       else st.push(num);
     }
-    else if(op=="pop"){
+    else if(op=="pop"){//出栈
       cin>>num;
-      if(st.empty()) cout<<"underflow\n";
+      if(st.empty()) cout<<"Error:Stack is underflow.\n";//下溢
       else{
           num=st.top();
           st.pop();
-          cout<<"pop "<<num<<'\n';
+          cout<<"pop "<<num<<'\n';//输出出栈元素
       }
     }
-    else if(op=="front"){
-      if(st.empty()) cout<<"null\n";
-      else cout<<"front: "<<st.front()<<'\n';
+    else if(op=="top"){//栈顶元素
+      if(st.empty()) cout<<"Error:Stack is empty.\n";//空栈
+      else cout<<"top: "<<st.top()<<'\n';
     }
-    else if(op=="empty"){
-      if(st.empty()) cout<<"true\n";
-      else cout<<"false\n";
+    else if(op=="empty"){//判断是否是空栈
+      if(st.empty()) cout<<"True\n";//真
+      else cout<<"False\n";//假
     }
-    else if(op=="size"){
+    else if(op=="size"){//栈内元素个数
       cout<<"size: "<<st.size()<<'\n';
     }
-    else if(op=="clear"){
+    else if(op=="clear"){//清空栈
       st.clear();
+      //while(st.size()) st.pop() //循环出栈
     }
   }
   return 0;
 }
+/*
+当有错误输入如：
+栈内元素数量超过栈容量仍然push
+栈为空时pop,top
+...
+输出错误信息后不执行该操作
+*/
